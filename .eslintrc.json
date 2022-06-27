@@ -1,6 +1,12 @@
 {
-  "extends": "next/core-web-vitals",
-  "plugins": ["prettier", "simple-import-sort"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals"
+  ],
+  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
   "rules": {
     "prettier/prettier": "error",
     "simple-import-sort/imports": "error",
