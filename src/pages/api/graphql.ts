@@ -1,7 +1,9 @@
 import { ApolloServer } from "apollo-server-express";
 import { NextApiHandler } from "next";
 
-import { typeDefs } from "../../schema";
+import { createApolloContext } from "../../apollo-context";
+import { typeDefs } from "../../graphql-schema";
+import { resolvers } from "../../resolvers";
 
 export const config = {
   api: {
@@ -11,20 +13,8 @@ export const config = {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers: {
-    Query: {
-      books: () => [
-        {
-          title: "The Awakening",
-          author: "Kate Chopin",
-        },
-        {
-          title: "City of Glass",
-          author: "Paul Auster",
-        },
-      ],
-    },
-  },
+  resolvers,
+  context: createApolloContext,
   csrfPrevention: true,
   cache: "bounded",
   introspection: true,

@@ -1,0 +1,13 @@
+schema: src/graphql-schema.ts
+
+generates:
+  src/types.gen.ts:
+    plugins:
+      - typescript
+  src/resolvers/types.gen.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      nonOptionalTypename: true
+      contextType: ../apollo-context#ResolverContext
